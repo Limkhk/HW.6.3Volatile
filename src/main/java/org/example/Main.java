@@ -68,13 +68,13 @@ public class Main {
             }
         }).start();
 
-        System.out.println("Красивых слов с длиной 3: " + lenVar3);
-        System.out.println("Красивых слов с длиной 4: " + lenVar4);
-        System.out.println("Красивых слов с длиной 5: " + lenVar5);
+        System.out.println("Красивых слов с длиной 3: " + lenVar3.get());
+        System.out.println("Красивых слов с длиной 4: " + lenVar4.get());
+        System.out.println("Красивых слов с длиной 5: " + lenVar5.get());
     }
 
     public static boolean isBeautiful3(String text) {
-        return text.equals(new StringBuilder(text).reverse().toString());
+        return text.equalsIgnoreCase(new StringBuilder(text).reverse().toString());
     }
 
     public static boolean isBeautiful4(String text) {
