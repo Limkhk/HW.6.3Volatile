@@ -14,41 +14,65 @@ public class Main {
         for (int i = 0; i < texts.length; i++) {
             texts[i] = generateText("abc", 3 + random.nextInt(3));
         }
-        Thread thread3 = new Thread(() -> {
+        new Thread(() -> {
             for (String text : texts) {
                 if (isBeautiful3(text)) {
-                    lenVar3.incrementAndGet();
+                    switch (text.length()) {
+                        case 3:
+                            lenVar3.incrementAndGet();
+                            break;
+                        case 4:
+                            lenVar4.incrementAndGet();
+                            break;
+                        case 5:
+                            lenVar5.incrementAndGet();
+                            break;
+                    }
                 }
             }
-        });
-        Thread thread4 = new Thread(() -> {
+        }).start();
+
+        new Thread(() -> {
             for (String text : texts) {
                 if (isBeautiful4(text)) {
-                    lenVar4.incrementAndGet();
+                    switch (text.length()) {
+                        case 3:
+                            lenVar3.incrementAndGet();
+                            break;
+                        case 4:
+                            lenVar4.incrementAndGet();
+                            break;
+                        case 5:
+                            lenVar5.incrementAndGet();
+                            break;
+                    }
                 }
             }
-        });
-        Thread thread5 = new Thread(() -> {
+        }).start();
+
+        new Thread(() -> {
             for (String text : texts) {
                 if (isBeautiful5(text)) {
-                    lenVar5.incrementAndGet();
+                    switch (text.length()) {
+                        case 3:
+                            lenVar3.incrementAndGet();
+                            break;
+                        case 4:
+                            lenVar4.incrementAndGet();
+                            break;
+                        case 5:
+                            lenVar5.incrementAndGet();
+                            break;
+                    }
                 }
             }
-        });
-
-        thread3.start();
-        thread4.start();
-        thread5.start();
-
-        thread3.join();
-        thread4.join();
-        thread5.join();
+        }).start();
 
         System.out.println("Красивых слов с длиной 3: " + lenVar3);
         System.out.println("Красивых слов с длиной 4: " + lenVar4);
         System.out.println("Красивых слов с длиной 5: " + lenVar5);
-
     }
+
     public static boolean isBeautiful3(String text) {
         return text.equals(new StringBuilder(text).reverse().toString());
     }
@@ -67,6 +91,7 @@ public class Main {
         }
         return true;
     }
+
     public static String generateText(String letters, int length) {
         Random random = new Random();
         StringBuilder text = new StringBuilder();
